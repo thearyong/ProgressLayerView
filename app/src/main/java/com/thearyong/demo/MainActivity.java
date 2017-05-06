@@ -8,7 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 
-import com.thearyong.progressview.ProgressView;
+import com.thearyong.plv.ProgressLayerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ProgressView pv = (ProgressView) findViewById(R.id.pv);
+        final ProgressLayerView pv = (ProgressLayerView) findViewById(R.id.pv);
         final SeekBar sb = (SeekBar) findViewById(R.id.sb);
         final RadioGroup rg = (RadioGroup) findViewById(R.id.rg);
         final SwitchCompat switch_reverse = (SwitchCompat) findViewById(R.id.switch_reverse);
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         final SwitchCompat switch_upload_err = (SwitchCompat) findViewById(R.id.switch_upload_err);
 
 
-        pv.setDirect(ProgressView.DIRECT.UP).setProgress(50);
+        pv.setDirect(ProgressLayerView.DIRECT.UP).setProgress(50);
 
         sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 if (checkedId == R.id.rb_up) {
-                    pv.setDirect(ProgressView.DIRECT.UP);
+                    pv.setDirect(ProgressLayerView.DIRECT.UP);
                 } else if (checkedId == R.id.rb_down) {
-                    pv.setDirect(ProgressView.DIRECT.DOWN);
+                    pv.setDirect(ProgressLayerView.DIRECT.DOWN);
                 } else if (checkedId == R.id.rb_left) {
-                    pv.setDirect(ProgressView.DIRECT.LEFT);
+                    pv.setDirect(ProgressLayerView.DIRECT.LEFT);
                 } else if (checkedId == R.id.rb_right) {
-                    pv.setDirect(ProgressView.DIRECT.RIGHT);
+                    pv.setDirect(ProgressLayerView.DIRECT.RIGHT);
                 }
             }
         });

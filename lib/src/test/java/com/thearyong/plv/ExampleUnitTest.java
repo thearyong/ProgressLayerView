@@ -1,4 +1,4 @@
-package com.thearyong.progressview;
+package com.thearyong.plv;
 
 import org.junit.Test;
 

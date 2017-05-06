@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingBottom="32dp">
 
-    <com.thearyong.progressview.ProgressView
+    <com.thearyong.plv.ProgressLayerView
         android:id="@+id/pv"
         android:layout_width="match_parent"
         android:layout_height="0dp"

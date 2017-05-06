@@ -1,4 +1,4 @@
-package com.thearyong.progressview;
+package com.thearyong.plv;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.thearyong.progressview;
+package com.thearyong.plv;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,7 +11,7 @@ import android.view.View;
  * Created by thearyong on 15/4/11.
  * 进度控件
  */
-public class ProgressView extends View {
+public class ProgressLayerView extends View {
 
     public enum DIRECT {
         UP(1),
@@ -53,30 +53,30 @@ public class ProgressView extends View {
     private boolean hasText = true;
     private boolean isReverse;
 
-    public ProgressView(Context context) {
+    public ProgressLayerView(Context context) {
         this(context, null);
     }
 
-    public ProgressView(Context context, AttributeSet attrs) {
+    public ProgressLayerView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ProgressView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ProgressLayerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     private void obtainAttributes(AttributeSet attrs) {
-        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressView);
-        int dir = ta.getInt(R.styleable.ProgressView_pv_direction, 1);
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressLayerView);
+        int dir = ta.getInt(R.styleable.ProgressLayerView_pv_direction, 1);
         direct = DIRECT.getDirection(dir);
-        progress = ta.getInteger(R.styleable.ProgressView_pv_progress, 0);
-        layerColor = ta.getColor(R.styleable.ProgressView_pv_layer_color, 0x33333333);
-        textColor = ta.getColor(R.styleable.ProgressView_pv_text_color, 0xffffffff);
-        textSize = ta.getDimensionPixelOffset(R.styleable.ProgressView_pv_text_size, 13);
-        hasText = ta.getBoolean(R.styleable.ProgressView_pv_text_able, true);
-        errorTips = ta.getString(R.styleable.ProgressView_pv_error_info);
-        errorLayerColor = ta.getColor(R.styleable.ProgressView_pv_error_color, 0x33fa0202);
+        progress = ta.getInteger(R.styleable.ProgressLayerView_pv_progress, 0);
+        layerColor = ta.getColor(R.styleable.ProgressLayerView_pv_layer_color, 0x33333333);
+        textColor = ta.getColor(R.styleable.ProgressLayerView_pv_text_color, 0xffffffff);
+        textSize = ta.getDimensionPixelOffset(R.styleable.ProgressLayerView_pv_text_size, 13);
+        hasText = ta.getBoolean(R.styleable.ProgressLayerView_pv_text_able, true);
+        errorTips = ta.getString(R.styleable.ProgressLayerView_pv_error_info);
+        errorLayerColor = ta.getColor(R.styleable.ProgressLayerView_pv_error_color, 0x33fa0202);
         ta.recycle();
 
     }
@@ -101,39 +101,39 @@ public class ProgressView extends View {
 
     }
 
-    public ProgressView setDirect(DIRECT direct) {
+    public ProgressLayerView setDirect(DIRECT direct) {
         this.direct = direct;
         postInvalidate();
         return this;
     }
 
-    public ProgressView setTextSize(float size) {
+    public ProgressLayerView setTextSize(float size) {
         textPaint.setTextSize(size);
         postInvalidate();
         return this;
     }
 
-    public ProgressView setTextColor(int textColor) {
+    public ProgressLayerView setTextColor(int textColor) {
         this.textColor = textColor;
         textPaint.setColor(textColor);
         postInvalidate();
         return this;
     }
 
-    public ProgressView setLayerColor(int recoverColor) {
+    public ProgressLayerView setLayerColor(int recoverColor) {
         this.layerColor = recoverColor;
         layerPaint.setColor(recoverColor);
         postInvalidate();
         return this;
     }
 
-    public ProgressView setHasText(boolean hasText) {
+    public ProgressLayerView setHasText(boolean hasText) {
         this.hasText = hasText;
         postInvalidate();
         return this;
     }
 
-    public ProgressView setReverse(boolean isReverse) {
+    public ProgressLayerView setReverse(boolean isReverse) {
         this.isReverse = isReverse;
         postInvalidate();
         return this;
@@ -218,7 +218,7 @@ public class ProgressView extends View {
         }
     }
 
-    public ProgressView setErrorTips(String errorTips) {
+    public ProgressLayerView setErrorTips(String errorTips) {
         this.progress = -1;
         layerPaint.setColor(errorLayerColor);
         this.errorTips = errorTips;

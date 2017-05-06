@@ -1,1 +1,1 @@
-include ':app', ':progressView'
+include ':app', ':lib'

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ProgressView">
+    <declare-styleable name="ProgressLayerView">
         <!-- 设置进度方式-->
         <attr name="pv_direction" format="enum">
             <enum name="UP" value="1"/>
