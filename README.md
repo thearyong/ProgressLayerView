@@ -9,9 +9,9 @@
 
 ## 使用：
 
-### 1. 添加 jpack 仓库
+### 1. 添加 jitpack 仓库
 
-项目根目录下 builde.gradle 添加 jpack 仓库，如下：
+项目根目录下 builde.gradle 添加 jitpack 仓库，如下：
 
 ``` gradle
 allprojects {
