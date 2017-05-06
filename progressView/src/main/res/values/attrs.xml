@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProgressView">
+        <!-- 设置进度方式-->
+        <attr name="pv_direction" format="enum">
+            <enum name="UP" value="1"/>
+            <enum name="DOWN" value="2"/>
+            <enum name="LEFT" value="3"/>
+            <enum name="RIGHT" value="4"/>
+        </attr>
+        <!-- 设置进度 -->
+        <attr name="pv_progress" format="integer"/>
+        <!-- 设置进度颜色 -->
+        <attr name="pv_layer_color" format="color"/>
+        <!-- 设置是否显示文字 -->
+        <attr name="pv_text_able" format="boolean"/>
+        <!-- 设置进度文字大小 -->
+        <attr name="pv_text_size" format="dimension"/>
+        <!-- 设置进度文字颜色 -->
+        <attr name="pv_text_color" format="color"/>
+        <!--  显示error信息 -->
+        <attr name="pv_error_info" format="string"/>
+        <attr name="pv_error_color" format="color"/>
+
+    </declare-styleable>
+
+</resources>
