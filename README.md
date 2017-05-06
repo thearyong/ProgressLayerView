@@ -1,3 +1,6 @@
+
+[![](https://jitpack.io/v/thearyong/ProgressLayerView.svg)](https://jitpack.io/#thearyong/ProgressLayerView)
+
 ## 说明：
 适用于图片上传下载或 app 安装等场景的遮罩层进度控件，
 支持指定上下左右4个方向和失败提醒配置。
@@ -11,20 +14,20 @@
 项目根目录下 builde.gradle 添加 jpack 仓库，如下：
 
 ``` gradle
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 ### 2. 依赖
 
 ```gradle
 dependencies {
-		compile 'com.github.thearyong:ProgressLayerView:v1.0.0'
-	}
+    compile 'com.github.thearyong:ProgressLayerView:v1.0.0'
+}
 ```
 
 ### 3. xml
