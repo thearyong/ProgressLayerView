@@ -26,7 +26,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    compile 'com.github.thearyong:ProgressLayerView:v1.0.0'
+    compile 'com.github.thearyong:ProgressLayerView:v1.0.1'
 }
 ```
 
