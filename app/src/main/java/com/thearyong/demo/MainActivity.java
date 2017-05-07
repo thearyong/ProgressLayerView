@@ -10,6 +10,7 @@ import android.widget.SeekBar;
 
 import com.thearyong.plv.ProgressLayerView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
