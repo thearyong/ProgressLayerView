@@ -1,5 +1,6 @@
 package com.thearyong.plv;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -50,8 +51,8 @@ public class ProgressLayerView extends View {
     private int progress;
     private int textColor;
     private float textSize;
-    private boolean hasText = true;
-    private boolean isReverse;
+    private boolean hasText;
+    private boolean isReverse;//遮罩进度反转(100-progress)，文字保持原有进度
 
     public ProgressLayerView(Context context) {
         this(context, null);
@@ -72,6 +73,7 @@ public class ProgressLayerView extends View {
         direct = DIRECT.getDirection(dir);
         progress = ta.getInteger(R.styleable.ProgressLayerView_pv_progress, 0);
         layerColor = ta.getColor(R.styleable.ProgressLayerView_pv_layer_color, 0x33333333);
+        isReverse = ta.getBoolean(R.styleable.ProgressLayerView_pv_layer_reverse, true);
         textColor = ta.getColor(R.styleable.ProgressLayerView_pv_text_color, 0xffffffff);
         textSize = ta.getDimensionPixelOffset(R.styleable.ProgressLayerView_pv_text_size, 13);
         hasText = ta.getBoolean(R.styleable.ProgressLayerView_pv_text_able, true);
@@ -97,7 +99,7 @@ public class ProgressLayerView extends View {
         setTextSize(textSize);
         setLayerColor(layerColor);
 
-        if (errorTips!=null) setErrorTips(errorTips);
+        if (errorTips != null) setErrorTips(errorTips);
 
     }
 
@@ -161,8 +163,6 @@ public class ProgressLayerView extends View {
         if (progress >= 100)
             progress = 100;
 
-        if (isReverse) progress = 100 - progress;
-
         this.progress = progress;
         setLayerColor(layerColor);
 
@@ -178,6 +178,9 @@ public class ProgressLayerView extends View {
 
     public void setComplete() {
         this.progress = 100;
+
+        if (autoAnim != null && autoAnim.isRunning())
+            autoAnim.cancel();
         postInvalidate();
     }
 
@@ -196,7 +199,9 @@ public class ProgressLayerView extends View {
         } else {
             if (progress > 100) return;
             //图片上覆盖的背景进度
-            float percent = progress / 100f;
+            int p = progress;
+            if (isReverse) p = 100 - progress;
+            float percent = p / 100f;
             switch (direct) {
                 case UP:
                     canvas.drawRect(0, 0, getWidth(), percent * getHeight(), layerPaint);
@@ -212,9 +217,11 @@ public class ProgressLayerView extends View {
                     break;
             }
             //文字百分比
-            if (hasText)
+            if (hasText){
                 canvas.drawText(progress + "%", (getWidth() - textPaint.measureText(progress + "%")) / 2,
                         (getHeight() - (textPaint.descent() + textPaint.ascent())) / 2, textPaint);
+            }
+
         }
     }
 
@@ -225,4 +232,24 @@ public class ProgressLayerView extends View {
         postInvalidate();
         return this;
     }
+
+
+    ValueAnimator autoAnim;
+
+    /**
+     * 默认动画
+     */
+    public void startAutoAnim() {
+        autoAnim = ValueAnimator.ofInt(0, 100);
+        autoAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int progress = (int) animation.getAnimatedValue();
+                setProgress(progress);
+            }
+        });
+        autoAnim.setDuration(3000).start();
+    }
+
+
 }

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         final SwitchCompat switch_reverse = (SwitchCompat) findViewById(R.id.switch_reverse);
         final SwitchCompat switch_progress_text = (SwitchCompat) findViewById(R.id.switch_progress_text);
         final SwitchCompat switch_upload_err = (SwitchCompat) findViewById(R.id.switch_upload_err);
-
+        final SwitchCompat switch_auto_anim = (SwitchCompat) findViewById(R.id.switch_auto_anim);
 
         pv.setDirect(ProgressLayerView.DIRECT.UP).setProgress(50);
 
@@ -76,6 +76,16 @@ public class MainActivity extends AppCompatActivity {
                 if (isChecked)
                     pv.setErrorTips("上传失败！");
                 else pv.reset();
+            }
+        });
+
+        switch_auto_anim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    pv.startAutoAnim();
+                }else
+                    pv.setComplete();
             }
         });
     }

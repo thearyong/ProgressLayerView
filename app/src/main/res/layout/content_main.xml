@@ -110,4 +110,11 @@
         android:layout_marginLeft="16dp"
         android:text="失败提醒"
         app:switchPadding="16dp"/>
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/switch_auto_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="自动动画"
+        app:switchPadding="16dp"/>
 </LinearLayout>
